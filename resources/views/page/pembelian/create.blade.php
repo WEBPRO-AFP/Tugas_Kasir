@@ -35,22 +35,11 @@
                                         <label for="supplier"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Supplier</label>
                                         <select class="js-example-placeholder-single js-states form-control w-full m-6"
-                                            id="id_supllier" name="id_supllier" data-placeholder="Pilih supllier">
+                                            id="id_supplier" name="id_supplier" data-placeholder="Pilih supllier">
                                             <option value="">Pilih...</option>
                                             @foreach ($supplier as $k)
                                                 <option value="{{ $k->id }}">{{ $k->nama_supplier }}</option>
                                             @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="mb-5 w-full">
-                                        <label for="status_pembelian"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
-                                            Pembelian</label>
-                                        <select class="js-example-placeholder-single js-states form-control w-full m-6"
-                                            id="status_pembelian" name="status_pembelian" data-placeholder="Pilih Status Pembelian">
-                                            <option value="">Pilih...</option>
-                                            <option value="LUNAS">LUNAS</option>
-                                            <option value="PIUTANG">PIUTANG</option>
                                         </select>
                                     </div>
                                 </div>

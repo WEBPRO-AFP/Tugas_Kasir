@@ -42,33 +42,35 @@ class PembelianController extends Controller
      */
     public function store(Request $request)
     {
-        $kode_pembelian = $request->input('kode_pembelian');
+    $kode_pembelian = $request->input('kode_pembelian'); // Mendapatkan kode_pembelian
 
-        $produk = $request->input('produk', []);
-        foreach ($produk as $index => $p) {
-            $dataDetail = [
-                'kode_penjualan' => $kode_pembelian,
-                'kode_produk' => $p,
-                'qty' => $request->qty[$index],
-                'total' => $request->total_harga[$index],
-            ];
-            // DetailPembelian::create($dataDetail);
-            DetailPembelian::create($dataDetail);
-        }
-
-        $data = [
+    $produk = $request->input('produk', []);
+    foreach ($produk as $index => $p) {
+        // Pastikan nilai kode_pembelian ada di data detail
+        $dataDetail = [
             'kode_pembelian' => $kode_pembelian,
-            'tgl_pembelian' => $request->input('tgl_pembelian'),
-            'id_supplier' => $request->input('id_supplier'),
-            'status_pembelian' => $request->input('status_pembelian'),
-            'id_user' => Auth::user()->id,
+            'kode_produk' => $p,
+            'qty' => $request->qty[$index],
+            'total' => $request->total_harga[$index],
         ];
 
-        Penjualan::create($data);
+        // Simpan data ke dalam tabel detail_pembelian
+        DetailPembelian::create($dataDetail);
+    }
 
-        return redirect()
-            ->route('penjualan.index')
-            ->with('message', 'Data sudah ditambahkan');
+    $data = [
+        'kode_pembelian' => $kode_pembelian,
+        'tgl_pembelian' => $request->input('tgl_pembelian'),
+        'id_supplier' => $request->input('id_supplier'),
+        'id_user' => Auth::user()->id,
+    ];
+
+  
+    Pembelian::create($data);
+
+    return redirect()
+        ->route('pembelian.index')
+        ->with('message', 'Data sudah ditambahkan');
     }
 
     /**

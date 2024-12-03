@@ -39,16 +39,7 @@
                                             SUPPLIER
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            PRODUK
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            QTY
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
                                             TOTAL HARGA
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            TOTAL PEMBELIAN
                                         </th>
                                     </tr>
                                 </thead>
@@ -72,13 +63,7 @@
                                                 {{ $f->supplier->nama_supplier}}
                                             </td>
                                             <td class="px-6 py-4 bg-gray-100">
-                                                {{ $f->produk->nama_produk }}
-                                            </td>
-                                            <td class="px-6 py-4 bg-gray-100">
                                                 {{ $f->total_harga }}
-                                            </td>
-                                            <td class="px-6 py-4 bg-gray-100">
-                                                {{ $f->total_pembelian}}
                                             </td>
                                         </tr>
                                     @endforeach
